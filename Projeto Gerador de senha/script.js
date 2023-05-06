@@ -30,7 +30,12 @@ function generatePassword(){
     novaSenha = pass;
 }
 
-function copyPassword(){
-    alert("Senha copiada com sucesso!")
-    navigator.clipboard.writeText(novaSenha);
-}
+function copyPassword() {
+    let selection = window.getSelection();
+    let range = document.createRange();
+    range.selectNodeContents(password);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("copy");
+    alert("Senha copiada com sucesso!");
+  }
